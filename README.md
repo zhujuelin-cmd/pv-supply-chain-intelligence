@@ -57,7 +57,7 @@ python scripts/e2e_validate.py
 
 ## 部署
 
-本项目未部署。任意支持 Python 3.11+ 的环境均可按上方命令启动；生产环境建议固定依赖、使用只读公开快照并记录更新审计日志。
+当前版本以 Streamlit 服务运行，并通过受控 Web 隧道提供访问。生产部署必须在服务端注入 `FUYAO_API_KEY` 与 `IFIND_API_KEY`，浏览器端不接触密钥。
 
 ## 边界
 
