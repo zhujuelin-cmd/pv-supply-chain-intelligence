@@ -5,9 +5,52 @@ from dataclasses import asdict
 import pandas as pd
 import streamlit as st
 
-from analysis_engine import chain_summary, graphviz_for
-from data_layer import FuyaoAdapter, IFindAdapter, interface_statuses, load_claims, load_q1, load_q2, load_q3, resolve_claims, snapshot_metadata
+from analysis_engine import chain_summary, fetch_live_pv_data, graphviz_for
+from data_layer import interface_statuses, load_claims, load_q1, load_q2, load_q3, resolve_claims, snapshot_metadata
 from .layout import claim_card, page_header, render_claims
+
+
+@st.cache_data(ttl=900, show_spinner=False)
+def _live_data() -> dict:
+    return fetch_live_pv_data()
+
+
+def _render_live_data(live: dict) -> None:
+    st.markdown("### 实时数据校验")
+    fuyao = live.get("fuyao", {})
+    if fuyao.get("adapter", {}).get("available"):
+        rows = []
+        for ticker_data in fuyao.get("data") or []:
+            for item in ticker_data.get("items", []):
+                rows.append({
+                    "代码": ticker_data["ticker"],
+                    "财年": item.get("fiscal_year"),
+                    "营业收入(亿元)": round((item.get("operating_income") or 0) / 1e8, 2),
+                    "净利润(亿元)": round((item.get("net_profit") or 0) / 1e8, 2),
+                    "归母净利润(亿元)": round((item.get("parent_holder_net_profit") or 0) / 1e8, 2),
+                    "EPS": item.get("basic_eps"),
+                })
+        st.success("扶摇 API 已连接：隆基绿能真实利润表已加载")
+        st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+    else:
+        st.warning("扶摇数据暂不可用：" + fuyao.get("adapter", {}).get("reason", "未知错误"))
+
+    if live.get("ifind_longi"):
+        st.success("iFinD MCP 已连接：隆基财务与光伏产业链指标已加载")
+        st.markdown("**隆基绿能｜iFinD 财务指标**")
+        st.markdown(live["ifind_longi"].get("answer", ""))
+        st.markdown("**光伏产业链｜iFinD 行业指标**")
+        st.markdown(live["ifind_chain"].get("answer", ""))
+        descriptions = live["ifind_chain"].get("indicator_description", [])
+        if descriptions:
+            st.caption("指标口径与来源")
+            st.dataframe(pd.DataFrame(descriptions), use_container_width=True, hide_index=True)
+    else:
+        reason = live.get("ifind_probe", {}).get("adapter", {}).get("reason", "未知错误")
+        st.warning("iFinD 数据暂不可用：" + reason)
+
+    for error in live.get("errors", []):
+        st.caption(f"接口提示：{error}")
 
 
 def render_home() -> None:
@@ -26,8 +69,12 @@ def render_home() -> None:
         ("Q3｜中外公司的表面数字能直接比吗？", "同时展示可比与不可比；拆解会计准则、币种、报告期、业务和政策差异。")]:
         st.markdown(f"**{title}**")
         st.caption(text)
-    st.subheader("方法边界")
-    st.info("本次运行仅使用官方公开资料快照。扶摇/iFinD无可用凭据及运行时客户端，不生成或模拟接口数据。所有展示结论均可回溯至 claim_id。")
+    st.subheader("数据运行状态")
+    statuses = interface_statuses()
+    if all(item.available for item in statuses):
+        st.success("扶摇 API 与 iFinD MCP 均已配置；关税情景页可直接查看真实公司财务和行业指标。")
+    else:
+        st.info("实时接口不可用时，产品会明确提示并回退到可审计的公开快照；不会生成或模拟数据。")
 
 
 def render_q1() -> None:
@@ -63,6 +110,9 @@ def render_q2() -> None:
         st.subheader("美国关税端到端验收链")
         for index, step in enumerate(scenario["e2e_steps"], 1):
             st.markdown(f"{index}. **{step['step']}** — `{', '.join(step['claim_ids'])}`")
+        with st.spinner("正在调用扶摇 API 与 iFinD MCP 拉取真实数据……"):
+            live = _live_data()
+        _render_live_data(live)
     render_claims(resolve_claims(scenario["claim_ids"]), "该情景全部证据")
 
 
@@ -93,16 +143,11 @@ def render_sources() -> None:
         st.markdown(f"**{status.name}** — `{status.status}`")
         st.caption(f"原因：{status.reason}")
         st.caption(f"回退：{status.fallback}")
-    if st.button("尝试连接已配置接口", type="secondary"):
-        with st.spinner("正在探测接口；失败时不会生成模拟数据……"):
-            fuyao_result = FuyaoAdapter().fetch()
-            ifind_result = IFindAdapter().fetch()
-        for name, result in [("扶摇", fuyao_result), ("iFinD", ifind_result)]:
-            state = result["adapter"]
-            if state["available"]:
-                st.success(f"{name}：连接成功，来源={state['fallback']}")
-            else:
-                st.warning(f"{name}：数据不可用；{state['reason']}。继续使用官方公开资料快照。")
+    if st.button("刷新并加载真实数据", type="primary"):
+        _live_data.clear()
+        with st.spinner("正在调用扶摇 API 与 iFinD MCP……"):
+            live = _live_data()
+        _render_live_data(live)
     st.subheader("可信度规则")
     st.write("财报/公告=⭐⭐⭐⭐；扶摇/iFinD/行业权威=⭐⭐⭐；头部研报=⭐⭐；媒体=⭐。星级表示来源类型优先级，不代表结论无不确定性。")
     claims = list(load_claims().values())
