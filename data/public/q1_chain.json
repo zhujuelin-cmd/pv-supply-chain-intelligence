@@ -1,0 +1,12 @@
+[
+  {"order":1,"stage":"多晶硅","company":"通威股份","ticker":"600438.SH","level":"L2","level_reason":"已确认成熟业务与销量，但当前证据无细分收入；按严格口径不得L1。","income_evidence":false,"claim_ids":["Q1-POLY-TW-2025"]},
+  {"order":2,"stage":"硅片","company":"隆基绿能","ticker":"601012.SH","level":"L2","level_reason":"有出货证据但无已复核独立收入。","income_evidence":false,"claim_ids":["Q1-WAFER-LONGI-2025"]},
+  {"order":3,"stage":"电池片","company":"爱旭股份","ticker":"600732.SH","level":"L2","level_reason":"有销量和毛利证据但无独立收入。","income_evidence":false,"claim_ids":["Q1-CELL-AIKO-2025"]},
+  {"order":4,"stage":"组件","company":"晶科能源","ticker":"688223.SH","level":"L1","level_reason":"审计报告披露光伏产品收入与占比；注意并非纯组件口径。","income_evidence":true,"claim_ids":["Q1-MODULE-JINKO-2025"]},
+  {"order":5,"stage":"胶膜/玻璃/支架","substage":"胶膜","company":"福斯特","ticker":"603806.SH","level":"L2","level_reason":"有胶膜出货，无胶膜收入。","income_evidence":false,"claim_ids":["Q1-FILM-FOSTER-2025"]},
+  {"order":5,"stage":"胶膜/玻璃/支架","substage":"玻璃","company":"福莱特","ticker":"601865.SH/06865.HK","level":"L2","level_reason":"公告确认成熟业务归属，但无可用细分收入；按官方经营证据归入L2。","income_evidence":false,"claim_ids":["Q1-GLASS-FLAT-2025"]},
+  {"order":5,"stage":"胶膜/玻璃/支架","substage":"支架","company":"中信博","ticker":"688408.SH","level":"L1","level_reason":"财报披露跟踪与固定支架分产品收入。","income_evidence":true,"claim_ids":["Q1-RACK-ARCTECH-2025"]},
+  {"order":6,"stage":"逆变器","company":"阳光电源","ticker":"300274.SZ","level":"L2","level_reason":"有逆变器发货，无独立收入。","income_evidence":false,"claim_ids":["Q1-INVERTER-SUNGROW-2025"]},
+  {"order":7,"stage":"EPC","company":"中国能建","ticker":"601868.SH/03996.HK","level":"L2","level_reason":"新能源合同额证明业务布局，但合同额不是光伏EPC收入。","income_evidence":false,"claim_ids":["Q1-EPC-CEEC-2025"]},
+  {"order":8,"stage":"运营","company":"中节能太阳能","ticker":"000591.SZ","level":"L1","level_reason":"年报披露光伏电站板块销售收入与占比。","income_evidence":true,"claim_ids":["Q1-OPERATOR-CEC-2025"]}
+]

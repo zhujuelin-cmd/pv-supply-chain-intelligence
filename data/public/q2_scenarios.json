@@ -1,0 +1,45 @@
+[
+  {
+    "scenario_id":"POLY_20","name":"硅料+20%","assumption":"成交价在基准上上涨20%，不是单周报价波动。","graph":["硅料价格+20%","硅片单位成本上升","电池/组件成本上升","毛利承压或提价","项目IRR/采购节奏"],
+    "matrix":[
+      {"period":"0–3月","impact":"低成本硅料厂ASP与存货价值方向向上；硅片/组件材料成本方向向上","companies":"通威、大全 / 隆基、晶科","metrics":"硅料ASP、单位成本、存货跌价、毛利率","sensitivity":"高","evidence_type":"历史数据支撑","claim_ids":["Q2-POLY-FORMULA","Q2-POLY-HISTORY"]},
+      {"period":"3–12月","impact":"组件提价能力决定成本由毛利还是终端承担","companies":"隆基、晶科、开发商","metrics":"组件ASP、销量、毛利率、项目资本开支","sensitivity":"中高","evidence_type":"逻辑推演","claim_ids":["Q2-POLY-FORMULA"]},
+      {"period":"1年以上","impact":"高价刺激复产扩产与降耗，冲击可能回落","companies":"全产业链","metrics":"产能利用率、耗硅量、均衡价格","sensitivity":"中","evidence_type":"逻辑推演","claim_ids":["Q2-POLY-FORMULA"]}
+    ],
+    "winners":"低成本硅料厂（方向正向）","losers":"无法转嫁成本的硅片/组件厂（方向负向）","formula":"单位成本增量=0.0021×P×20%=0.00042P 美元/W","failure":"长协锁价、低价库存、组件完全提价、耗硅量下降或涨价无成交。","claim_ids":["Q2-POLY-FORMULA","Q2-POLY-HISTORY"]
+  },
+  {
+    "scenario_id":"US_TARIFF_25","name":"美国组件关税+25%","assumption":"对目标进口组件在现有适用税费之上新增25个百分点从价税；不是现行政策事实。","graph":["进口组件新增25%从价税","晶科/隆基进口到岸成本上升","美国销量/毛利/库存承压","项目改采或延期","First Solar本土制造相对受益","45X与关税保护分别归因"],
+    "matrix":[
+      {"period":"0–3月","impact":"在途货物和未锁税订单成本上升；不可调价时毛利承压、库存/交付风险上升","companies":"晶科、隆基","metrics":"海外/美国收入、单位毛利、库存、关税准备","sensitivity":"高","evidence_type":"逻辑推演","claim_ids":["Q2-TARIFF-POLICY","Q2-TARIFF-JINKO","Q2-TARIFF-LONGI"]},
+      {"period":"3–12月","impact":"进口销量/份额承压；本土合规产能利用率和议价改善","companies":"晶科、隆基、First Solar","metrics":"美国销量、ASP、毛利率、库存天数、bookings","sensitivity":"高","evidence_type":"历史数据支撑","claim_ids":["Q2-TARIFF-JINKO","Q2-TARIFF-LONGI","Q2-TARIFF-FSLR-TECH"]},
+      {"period":"1年以上","impact":"供应链本土化加深；First Solar优势取决于税目是否排除CdTe，45X需独立衡量","companies":"晶科、隆基、First Solar","metrics":"美国本土产能、利用率、资本开支、45X、订单储备","sensitivity":"中高","evidence_type":"逻辑推演","claim_ids":["Q2-TARIFF-FSLR-TECH","Q2-TARIFF-FSLR-45X"]}
+    ],
+    "winners":"First Solar等符合范围差异且在美制造的产品（条件性正向）","losers":"受税目覆盖且无法转嫁的进口组件与开发商（条件性负向）","formula":"新增税额=0.25C；未转嫁毛利损失=(1-转嫁率)×0.25C","failure":"税目不覆盖、豁免/配额/祖父条款、本土供应链满足原产地、政策覆盖CdTe或需求整体下滑。","claim_ids":["Q2-TARIFF-POLICY","Q2-TARIFF-JINKO","Q2-TARIFF-LONGI","Q2-TARIFF-FSLR-TECH","Q2-TARIFF-FSLR-45X"],
+    "e2e_steps":[
+      {"step":"组件出口与税率口径","claim_ids":["Q2-TARIFF-POLICY"]},
+      {"step":"晶科/隆基暴露","claim_ids":["Q2-TARIFF-JINKO","Q2-TARIFF-LONGI"]},
+      {"step":"海外收入/毛利/库存指标","claim_ids":["Q2-TARIFF-JINKO","Q2-TARIFF-LONGI"]},
+      {"step":"First Solar美国本土制造与范围差异","claim_ids":["Q2-TARIFF-FSLR-TECH"]},
+      {"step":"45X与关税保护分离","claim_ids":["Q2-TARIFF-FSLR-45X"]}
+    ]
+  },
+  {
+    "scenario_id":"EU_TARGET_UP","name":"欧洲装机目标上调","assumption":"在2030年约600GW政策基线之上新增ΔT GW，不假设未公布的目标数字。","graph":["欧盟目标上调","成员国计划/招标/许可","项目储备与订单","组件/逆变器/EPC收入","电网拥堵与负电价约束"],
+    "matrix":[
+      {"period":"0–3月","impact":"项目管线、询价和订单覆盖方向向上，收入通常尚未确认","companies":"隆基、晶科、欧洲开发商","metrics":"招标GW、订单、预付款","sensitivity":"中","evidence_type":"逻辑推演","claim_ids":["Q2-EU-TARGET"]},
+      {"period":"3–12月","impact":"欧洲销量方向向上，同时营运资金占用增加","companies":"组件、逆变器、EPC","metrics":"欧洲出货、收入、应收、库存","sensitivity":"中高","evidence_type":"分析师共识","claim_ids":["Q2-EU-TARGET","Q2-EU-GRID"]},
+      {"period":"1年以上","impact":"储能、电网灵活性价值上升；拥堵与负电价限制项目收益","companies":"阳光、开发商、电网设备商","metrics":"储能出货、接网队列、负电价时数","sensitivity":"中","evidence_type":"分析师共识","claim_ids":["Q2-EU-GRID"]}
+    ],
+    "winners":"满足韧性规则的组件、逆变器、储能和EPC企业","losers":"接网受限项目与不满足非价格标准的供应商","formula":"新增年度装机≈ΔT/N；公司新增出货=ΔT×可服务市场×份额","failure":"只有政治目标而无预算/拍卖/许可，并网与融资约束恶化。","claim_ids":["Q2-EU-TARGET","Q2-EU-GRID"]
+  },
+  {
+    "scenario_id":"PEROVSKITE_BREAK","name":"钙钛矿重大突破","assumption":"至少满足大面积认证、可靠性、量产良率/成本/交付中的两项，不把小面积纪录当商业化。","graph":["效率/稳定性/量产突破","单位面积功率提升","BOS成本下降","高效组件溢价","旧产线升级/减值压力"],
+    "matrix":[
+      {"period":"0–3月","impact":"研发价值与订单预期上升，财报先体现研发费用","companies":"隆基、Oxford PV、传统厂商","metrics":"认证效率、研发费用、订单意向","sensitivity":"中","evidence_type":"历史数据支撑","claim_ids":["Q2-PERO-THRESHOLD","Q2-PERO-LONGI"]},
+      {"period":"3–12月","impact":"中试阶段关注良率、可靠性和客户愿付溢价","companies":"叠层技术企业","metrics":"良率、$/W、IEC测试、ASP","sensitivity":"高","evidence_type":"分析师共识","claim_ids":["Q2-PERO-THRESHOLD"]},
+      {"period":"1年以上","impact":"量产成功者收入/毛利正向；不兼容旧产线可能减值","companies":"隆基、晶科、First Solar","metrics":"GW产能、ROIC、质保、旧产线减值","sensitivity":"高","evidence_type":"逻辑推演","claim_ids":["Q2-PERO-THRESHOLD","Q2-PERO-LONGI"]}
+    ],
+    "winners":"通过可靠性和量产验证的叠层技术企业","losers":"不能升级且效率落后的存量产线","formula":"客户愿付溢价上限≤BOS及全生命周期发电收益节约","failure":"稳定性、含铅监管、良率、融资认可或规模成本不达标。","claim_ids":["Q2-PERO-THRESHOLD","Q2-PERO-LONGI"]
+  }
+]
