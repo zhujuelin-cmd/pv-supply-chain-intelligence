@@ -37,6 +37,10 @@ def load_q3() -> list[dict[str, Any]]:
     return _read_json("q3_comparables.json")
 
 
+def load_industry_background() -> dict[str, Any]:
+    return _read_json("industry_background.json")
+
+
 def resolve_claims(ids: list[str]) -> list[Claim]:
     ledger = load_claims()
     return [ledger[item] for item in ids]

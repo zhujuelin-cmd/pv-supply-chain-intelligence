@@ -1,0 +1,147 @@
+{
+  "snapshot_date": "2026-10-27",
+  "sources": {
+    "cpia": {
+      "name": "中国光伏行业协会｜中国光伏产业发展路线图（2023-2024年）",
+      "url": "https://www.chinapv.org.cn/Industry/resource_1380.html"
+    },
+    "iea": {
+      "name": "IEA PVPS｜Snapshot of Global PV Markets 2025",
+      "url": "https://iea-pvps.org/snapshot-reports/snapshot-2025/"
+    },
+    "pv_infolink": {
+      "name": "PV InfoLink｜PV spot price",
+      "url": "https://www.infolink-group.com/spot-price/"
+    },
+    "nrel": {
+      "name": "U.S. Department of Energy｜Solar Photovoltaics Supply Chain Review",
+      "url": "https://www.energy.gov/cmei/systems/solar-photovoltaics-supply-chain-review-report"
+    },
+    "eu": {
+      "name": "European Commission｜Solar energy",
+      "url": "https://energy.ec.europa.eu/topics/renewable-energy/solar-energy_en"
+    },
+    "us_45x": {
+      "name": "U.S. Treasury｜45X Advanced Manufacturing Production Credit",
+      "url": "https://home.treasury.gov/system/files/8861/2024.12.12.45X_Slides%20Final.pdf"
+    },
+    "ifind": {
+      "name": "iFinD｜代表上市公司2025年报综合毛利率（检索日2026-10-27）",
+      "url": "https://mcp.51ifind.com/"
+    }
+  },
+  "stages": [
+    {
+      "group": "上游",
+      "stage": "多晶硅",
+      "function": "把工业硅进一步提纯为太阳能级多晶硅，是硅片制造的核心原料。",
+      "competition": "竞争重点是电力与原料成本、单吨能耗、纯度控制、连续稳定生产和产能利用率。",
+      "companies": "通威股份、大全能源、协鑫科技",
+      "source_ids": ["nrel", "cpia"]
+    },
+    {
+      "group": "中游制造",
+      "stage": "硅片",
+      "function": "将多晶硅拉制成硅棒并切割成硅片，为电池片提供基底。",
+      "competition": "竞争重点是薄片化、硅耗、良率、设备效率与大尺寸产品的量产能力。",
+      "companies": "隆基绿能、TCL中环",
+      "source_ids": ["nrel", "cpia"]
+    },
+    {
+      "group": "中游制造",
+      "stage": "电池片",
+      "function": "在硅片上形成光电转换结构，把太阳能转换为直流电。",
+      "competition": "核心是转换效率、金属化成本、良率和技术路线量产能力；当前重点是 N 型 TOPCon、HJT、BC 等路线。",
+      "companies": "爱旭股份、通威股份、捷泰科技",
+      "source_ids": ["cpia"]
+    },
+    {
+      "group": "中游制造",
+      "stage": "组件",
+      "function": "把电池片串并联后与玻璃、胶膜、背板和边框封装，形成可安装的发电单元。",
+      "competition": "核心是组件效率、可靠性、品牌与渠道、海外认证、供应链整合以及成本转嫁能力。",
+      "companies": "晶科能源、隆基绿能、天合光能、晶澳科技",
+      "source_ids": ["nrel", "cpia"]
+    },
+    {
+      "group": "辅材",
+      "stage": "胶膜",
+      "function": "用于封装电池片并隔绝水汽、缓冲应力，直接影响组件寿命和可靠性。",
+      "competition": "核心是配方、耐候性、一致性、粒子采购和规模化薄膜制造。",
+      "companies": "福斯特、海优新材",
+      "source_ids": ["cpia"]
+    },
+    {
+      "group": "辅材",
+      "stage": "光伏玻璃",
+      "function": "保护电池片并保证光线透过，是组件的重要重量与成本构成。",
+      "competition": "核心是窑炉规模、能耗、良品率、超薄玻璃能力和产能区位。",
+      "companies": "福莱特、信义光能",
+      "source_ids": ["cpia"]
+    },
+    {
+      "group": "辅材",
+      "stage": "边框与支架",
+      "function": "边框保护组件，固定或跟踪支架负责承载组件并优化受光角度。",
+      "competition": "核心是材料成本、结构设计、抗风可靠性、跟踪算法和全球交付能力。",
+      "companies": "中信博、天合跟踪、振江股份",
+      "source_ids": ["cpia"]
+    },
+    {
+      "group": "辅材",
+      "stage": "逆变器",
+      "function": "把组件产生的直流电转换为可并网使用的交流电，并承担监控、控制和电网友好功能。",
+      "competition": "核心是功率器件、电力电子算法、可靠性、海外认证、渠道服务以及储能协同。",
+      "companies": "阳光电源、华为数字能源、Enphase",
+      "source_ids": ["cpia", "iea"]
+    },
+    {
+      "group": "下游",
+      "stage": "EPC",
+      "function": "负责电站的设计、设备采购、工程建设与并网交付。",
+      "competition": "核心是项目开发能力、工程管理、融资成本、工期控制和全球本地化执行。",
+      "companies": "中国能建、中国电建",
+      "source_ids": ["iea"]
+    },
+    {
+      "group": "下游",
+      "stage": "电站运营与电网",
+      "function": "运营商持有或管理电站并销售电力，电网负责消纳、调度和结算。",
+      "competition": "核心是资源禀赋、融资成本、利用小时、运维效率、电价机制和并网消纳条件。",
+      "companies": "太阳能、三峡能源、国家电投",
+      "source_ids": ["iea", "eu"]
+    }
+  ],
+  "margin_reference": [
+    {"stage": "多晶硅", "margin": "2%–3%", "value_position": "周期低位，利润承压", "basis": "通威股份综合毛利率 2.70%"},
+    {"stage": "硅片/一体化", "margin": "0%–3%", "value_position": "价格战区间", "basis": "隆基绿能综合毛利率 0.81%"},
+    {"stage": "电池片", "margin": "0%–3%", "value_position": "技术升级但供给过剩", "basis": "爱旭股份综合毛利率 2.59%"},
+    {"stage": "组件", "margin": "-1%–3%", "value_position": "品牌与渠道重要，但成本转嫁受限", "basis": "晶科能源综合毛利率 -0.60%；隆基绿能 0.81%"},
+    {"stage": "胶膜", "margin": "10%–12%", "value_position": "配方与客户认证形成壁垒", "basis": "福斯特综合毛利率 10.96%"},
+    {"stage": "光伏玻璃", "margin": "16%–18%", "value_position": "窑炉与规模壁垒", "basis": "福莱特综合毛利率 16.91%"},
+    {"stage": "支架", "margin": "16%–18%", "value_position": "跟踪算法与全球交付带来溢价", "basis": "中信博综合毛利率 17.11%"},
+    {"stage": "逆变器", "margin": "30%–33%", "value_position": "电力电子与渠道利润较强", "basis": "阳光电源综合毛利率 31.83%"},
+    {"stage": "EPC", "margin": "11%–13%", "value_position": "项目管理型利润", "basis": "中国能建综合毛利率 12.19%"},
+    {"stage": "电站运营", "margin": "45%–48%", "value_position": "资产运营毛利较高，但资本开支和融资不可忽略", "basis": "太阳能综合毛利率 46.58%"}
+  ],
+  "price_variables": [
+    {"name": "多晶硅价格", "meaning": "决定上游景气和硅片原料成本，是最典型的周期变量。", "source_id": "pv_infolink"},
+    {"name": "硅片价格", "meaning": "反映硅料成本、拉晶切片产能利用率和库存压力。", "source_id": "pv_infolink"},
+    {"name": "电池片价格", "meaning": "反映不同技术路线的效率溢价和电池环节供需。", "source_id": "pv_infolink"},
+    {"name": "组件价格", "meaning": "直接影响终端项目收益率，也体现制造端成本能否向下游转嫁。", "source_id": "pv_infolink"}
+  ],
+  "development": {
+    "stage": "需求端仍快速增长；制造端已进入成熟期与周期性出清阶段。",
+    "changes": [
+      "N 型电池替代 P 型成为主线，TOPCon、HJT、BC 等路线围绕效率、银耗和量产良率竞争。",
+      "主产业链从高利润扩产转向价格竞争，低利用率、库存减值和现金流成为关键风险。",
+      "产能扩张快于阶段性需求释放，行业关注点从‘有没有产能’转向‘成本、技术与资产负债表能否穿越周期’。"
+    ],
+    "markets": [
+      "美国：关税、贸易救济与 45X 本土制造激励并存，进口保护和本土补贴必须分开分析。",
+      "欧洲：REPowerEU 推动太阳能部署，同时更重视供应链韧性、本地制造和可持续要求。",
+      "新兴市场：中东、印度、巴基斯坦、拉美等市场增长加快，但融资、汇率、本地内容和电网消纳差异较大。"
+    ],
+    "source_ids": ["cpia", "iea", "eu", "us_45x"]
+  }
+}
