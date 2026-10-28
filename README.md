@@ -1,11 +1,12 @@
 # 光伏产业链传导分析仪（PV Supply Chain Intelligence）
 
-[![Streamlit App](https://img.shields.io/badge/Streamlit-Live%20Demo-FF4B4B?style=flat-square&logo=streamlit)](https://prep-oem-surveys-labeled.trycloudflare.com)
+[![Streamlit App](https://img.shields.io/badge/Streamlit%20Cloud-Deployed-FF4B4B?style=flat-square&logo=streamlit)](https://appcom-h27dfzpp6nsehsontg5t8n.streamlit.app/)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=flat-square&logo=python)](https://www.python.org/)
 [![Tests](https://img.shields.io/badge/pytest-14%20passed-success?style=flat-square)](tests/)
 [![Evidence-First](https://img.shields.io/badge/Evidence-Auditable%20Claims-green?style=flat-square)](data/public/claims.json)
 
-> **在线访问地址**：[https://prep-oem-surveys-labeled.trycloudflare.com](https://prep-oem-surveys-labeled.trycloudflare.com)  
+> **Streamlit Cloud 永久公网地址**：[https://appcom-h27dfzpp6nsehsontg5t8n.streamlit.app/](https://appcom-h27dfzpp6nsehsontg5t8n.streamlit.app/)  
+> **备用在线访问地址**：[https://prep-oem-surveys-labeled.trycloudflare.com](https://prep-oem-surveys-labeled.trycloudflare.com)  
 > **免责声明**：本产品定位为**产业与公司投研辅助工具，不构成任何投资建议、证券买卖推荐或收益承诺**。所有推演结论需结合最新公开披露与市场变化独立复核。
 
 ---
