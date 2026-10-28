@@ -21,7 +21,14 @@ IFIND_SERVERS = {
 
 
 def _load_project_env() -> None:
-    """加载本地 .env；已由部署环境注入的变量优先，不会被覆盖。"""
+    """加载本地 .env 及 Streamlit Secrets；已由部署环境注入的变量优先。"""
+    try:
+        import streamlit as st
+        for k, v in st.secrets.items():
+            if isinstance(v, str):
+                os.environ.setdefault(k, v)
+    except Exception:
+        pass
     path = ROOT / ".env"
     if not path.exists():
         return
